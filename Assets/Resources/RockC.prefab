@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 33685441982469850}
   - component: {fileID: 23060078426103200}
   m_Layer: 0
-  m_Name: RockC (Instance)
+  m_Name: RockC
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -8,8 +8,8 @@ namespace BigWorld {
     /// </summary>
     public class Block : MonoBehaviour {
         
-        Vector3Int coord;
-        
+        public Vector3Int coord;
 
+        public int x, y,z;
     }
 }

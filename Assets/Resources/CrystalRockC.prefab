@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 33474970758832054}
   - component: {fileID: 23965274288737112}
   m_Layer: 0
-  m_Name: CrystalRockC (Instance)
+  m_Name: CrystalRockC
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
