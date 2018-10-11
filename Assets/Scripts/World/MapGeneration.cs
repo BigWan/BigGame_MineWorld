@@ -19,7 +19,7 @@ namespace BigWorld {
         public int range;
 
 
-        public float noiseScale=0.05f;
+        public float noiseScale = 0.05f;
 
         Chunk Generation(World world,Vector2Int chunkCoord) {
 
@@ -34,7 +34,7 @@ namespace BigWorld {
                     blockCoord = GetBlockWorldCoord(chunk, new Vector2Int(x, z));
 
                     chunk.SetHeightMap (x, z, 
-                        (int)(Mathf.PerlinNoise(blockCoord.x* noiseScale, blockCoord.y* noiseScale) * 255)
+                        (int)(Mathf.PerlinNoise(blockCoord.x* noiseScale, blockCoord.y* noiseScale) * 128)
                         );
                 }
             }
@@ -52,7 +52,7 @@ namespace BigWorld {
 
         Vector2Int GetBlockWorldCoord(Chunk chunk,Vector2Int blockCoord) {
 
-            return new Vector2Int(chunk.x * 16 + blockCoord.x, chunk.z * 16 + blockCoord.z);
+            return new Vector2Int(chunk.x * 16 + blockCoord.x, chunk.z * 16 + blockCoord.y);
 
         }
         
