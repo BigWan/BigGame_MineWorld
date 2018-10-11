@@ -52,7 +52,7 @@ namespace BigWorld {
 
         Vector2Int GetBlockWorldCoord(Chunk chunk,Vector2Int blockCoord) {
 
-            return new Vector2Int(chunk.x * 16 + blockCoord.x, chunk.z * 16 + blockCoord.z);
+            return new Vector2Int(chunk.x * 16 + blockCoord.x, chunk.z * 16 + blockCoord.y);
 
         }
         
