@@ -26,13 +26,6 @@ public class TestPerlin : MonoBehaviour {
 
     private void Awake() {
 
-        //PseudoRandom rnd = new PseudoRandom(10);
-
-        //for (int i = 0; i < 1000; i++) {
-        //    var value = rnd.Range(256);
-        //    Debug.Log(value==0);
-        //}
-
         StartCoroutine(Test());
     }
 

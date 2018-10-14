@@ -11,13 +11,29 @@
         /// <summary> 振幅叠加常数 </summary>
         private float persistence;
 
+        /// <summary>
+        /// 偏移量
+        /// </summary>
+        private float offset;
+        /// <summary>
+        /// 缩放
+        /// </summary>
+        private float scale;
+
         /// <summary> 基础噪声函数 </summary>
         private T noise;
 
-        public OctavedNoise(T noise,byte octaves,float persistence ) {
+        public OctavedNoise(T noise,byte octaves,float persistence,float offset = 0,float scale = 1f ) {
             this.noise = noise;
             this.octaves = octaves;
             this.persistence = persistence;
+            this.offset = offset;
+            this.scale = scale;
+        }
+
+        public void SetOS(float offset,float scale) {
+            this.offset = offset;
+            this.scale = scale;
         }
 
         public double Noise(double x, double y, double z) {
@@ -34,10 +50,11 @@
             }
 
             return total / maxValue;
-
-
         }
 
+        public double NoiseOS(double x,double y,double z) {
+            return Noise(x * scale + offset, y * scale + offset, z * scale + offset);
+        }
 
     }
 

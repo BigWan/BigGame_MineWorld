@@ -1,5 +1,8 @@
 ﻿using System;
 
+/// <summary>
+/// 增强的数学库
+/// </summary>
 namespace BW.MathUtil {
     /// <summary>
     /// 改进的柏林噪声
@@ -7,10 +10,13 @@ namespace BW.MathUtil {
     /// </summary>
     public class PerlinNoise : INoise {
 
-        private readonly int[] p = new int[512];
-        
         /// <summary>
-        /// Seed 为0时用这个
+        /// 随机序列
+        /// </summary>
+        private readonly int[] p = new int[512];
+
+        /// <summary>
+        /// Seed 为0时用这个做随机数据序列源
         /// </summary>
         static short[] permutation = {
             151, 160, 137, 91, 90, 15,
@@ -28,7 +34,7 @@ namespace BW.MathUtil {
             138, 236, 205, 93, 222, 114, 67, 29, 24, 72, 243, 141, 128, 195, 78, 66, 215, 61, 156, 180
         };
 
-        public PerlinNoise(uint seed = 0) {
+        public PerlinNoise(ulong seed = 0) {
 
             if (seed == 0) {
                 for (int i = 0; i < 256; i++)
@@ -40,6 +46,9 @@ namespace BW.MathUtil {
             }
         }
 
+        /// <summary>
+        /// 3维噪声值
+        /// </summary>
         public double Noise(double x, double y, double z) {
 
             // FIND UNIT CUBE THAT CONTAINS POINT.
@@ -59,12 +68,12 @@ namespace BW.MathUtil {
             double w = Fade(z);
 
             // HASH COORDINATES OF THE 8 CUBE CORNERS,
-            int A = p[X] + Y,
-                AA = p[A] + Z,
-                AB = p[A + 1] + Z,
-                B = p[X + 1] + Y,
-                BA = p[B] + Z,
-                BB = p[B + 1] + Z;
+            int A = p[X] + Y;
+            int AA = p[A] + Z;
+            int AB = p[A + 1] + Z;
+            int B = p[X + 1] + Y;
+            int BA = p[B] + Z;
+            int BB = p[B + 1] + Z;
 
             // AND ADD// BLENDED// RESULTS// FROM  8// CORNERS// OF CUBE
             return Lerp(
@@ -107,8 +116,6 @@ namespace BW.MathUtil {
             double v = h < 4 ? y : h == 12 || h == 14 ? x : z;
             return ((h & 1) == 0 ? u : -u) + ((h & 2) == 0 ? v : -v);
         }
-
-
 
 
     }
