@@ -11,7 +11,7 @@ namespace BigWorld {
         /// <summary>
         /// Chunk尺寸(Block为单位)
         /// </summary>
-        public const int xSize = 16, height = 128, zSize = 16;
+        public const int xSize = 16, height = 256, zSize = 16;
                        
 
         /// <summary>坐标</summary>

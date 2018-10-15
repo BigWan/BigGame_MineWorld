@@ -10,15 +10,11 @@ namespace BW.MathUtil {
     /// </summary>
     public class PerlinNoise : INoise {
 
-        /// <summary>
-        /// 随机序列
-        /// </summary>
+        /// <summary> 随机序列 </summary>
         private readonly int[] p = new int[512];
-
-        /// <summary>
-        /// Seed 为0时用这个做随机数据序列源
-        /// </summary>
-        static short[] permutation = {
+        
+        /// <summary> Seed 为0时用这个做随机数据序列源 </summary>
+        static byte[] permutation = {
             151, 160, 137, 91, 90, 15,
             131, 13, 201, 95, 96, 53, 194, 233, 7, 225, 140, 36, 103, 30, 69, 142, 8, 99, 37, 240, 21, 10, 23,
             190, 6, 148, 247, 120, 234, 75, 0, 26, 197, 62, 94, 252, 219, 203, 117, 35, 11, 32, 57, 177, 33,
@@ -46,9 +42,7 @@ namespace BW.MathUtil {
             }
         }
 
-        /// <summary>
-        /// 3维噪声值
-        /// </summary>
+        /// <summary> 3维噪声值 </summary>
         public double Noise(double x, double y, double z) {
 
             // FIND UNIT CUBE THAT CONTAINS POINT.
@@ -75,7 +69,7 @@ namespace BW.MathUtil {
             int BA = p[B] + Z;
             int BB = p[B + 1] + Z;
 
-            // AND ADD// BLENDED// RESULTS// FROM  8// CORNERS// OF CUBE
+            // AND ADD BLENDED RESULTS FROM 8 CORNERS OF CUBE
             return Lerp(
                 Lerp(
                     Lerp(
