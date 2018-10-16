@@ -70,7 +70,8 @@ namespace BW.MathUtil {
             int BB = p[B + 1] + Z;
 
             // AND ADD BLENDED RESULTS FROM 8 CORNERS OF CUBE
-            return Lerp(
+
+            double r = Lerp(
                 Lerp(
                     Lerp(
                         Grad(p[AA], x, y, z),
@@ -92,6 +93,7 @@ namespace BW.MathUtil {
                         u),
                     v)
                 , w);
+            return (r + 1) / 2;
         }
 
         double Fade(double t) {

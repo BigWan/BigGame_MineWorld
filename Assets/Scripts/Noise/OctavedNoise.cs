@@ -1,14 +1,16 @@
-﻿namespace BW.MathUtil {
+﻿using System;
+
+namespace BW.MathUtil {
 
     /// <summary>
     /// 振幅叠加的噪声
     /// </summary>
     public class OctavedNoise<T>:INoise where T : INoise {
 
-        /// <summary> 频率 </summary>
+        /// <summary> 倍频(噪声音阶) </summary>
         private byte octaves;
 
-        /// <summary> 振幅叠加常数 </summary>
+        /// <summary> 持续性(振幅变化率) </summary>
         private float persistence;
 
         /// <summary>
@@ -38,9 +40,10 @@
 
         public double Noise(double x, double y, double z) {
             double total = 0;
-            int frequency = 1;
-            double amplitude = 1;
             double maxValue = 0;
+            
+            int frequency = 1;   // 频率
+            double amplitude = 1; // 振幅
 
             for (int i = 0; i < octaves; i++) {
                 total += noise.Noise(x * frequency, y * frequency, z * frequency) * amplitude;
@@ -52,9 +55,17 @@
             return total / maxValue;
         }
 
+        /// <summary>
+        /// 带偏移和缩放的噪声
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <param name="z"></param>
+        /// <returns></returns>
         public double NoiseOS(double x,double y,double z) {
             return Noise(x * scale + offset, y * scale + offset, z * scale + offset);
         }
+
 
     }
 
